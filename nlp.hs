@@ -2,9 +2,9 @@ import Data.Array (listArray, (!))
 import Data.List (foldr1, foldl', intercalate, map)
 import Data.Map (Map, empty, insertWith, size, map, toList, findMin)
 
-minimumEditDistance :: String -> String -> Int
+minEditDist :: String -> String -> Int
 -- Computes Levenshtein minimum edit distance between two words
-minimumEditDistance x y = arr ! (lx, ly)
+minEditDist x y = arr ! (lx, ly)
                     where lx = length x
                           ly = length y
                           arr = listArray ((0, 0), (lx, ly)) (Data.List.map f [(a, b) | a <- [0..lx], b <- [0..ly]])
@@ -41,7 +41,6 @@ unigramModel = ngramModel 1
 bigramModel = ngramModel 2
 
 ngramLength = length.fst.findMin
---writeFile "data.txt" (unlines (Data.List.map (takeWhile (/='/')) (lines s)))
 
 arpaFormat n fi fo = do
   s <- readFile fi
